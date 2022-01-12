@@ -12,9 +12,10 @@ const App: React.FC = () => {
           NFT-Watch
         </span>
           <a href="https://nftkey.app/" target="_blank" rel="noreferrer"><img src="./img/nftkey-logo.svg" alt="logo" className="Nftkey-logo" /></a>
-          <br/><br/>
+          <br/><br/>_______________________________________<br/><br/>
 
       </header>
+
       <EventPrinter />
     </div>
   );
