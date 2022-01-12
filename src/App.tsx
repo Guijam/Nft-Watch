@@ -6,10 +6,13 @@ const App: React.FC = () => {
   return (
     <div className="App">
       <header className="App-header"><br/>
-        <a href="https://paintswap.finance" target="_blank" rel="noreferrer"><img src="./logo.png" alt="logo" className="App-logo" /></a>
-        <h1>
+        <img src="./logo.png" alt="logo" className="App-logo" />
+        <a href="https://paintswap.finance" target="_blank" rel="noreferrer"><img src="./img/ps-logo.png" alt="logo" className="Ps-logo" /></a>
+        <span className="Title">
           NFT-Watch
-        </h1><br/><br/>
+        </span>
+          <a href="https://nftkey.app/" target="_blank" rel="noreferrer"><img src="./img/nftkey-logo.svg" alt="logo" className="Nftkey-logo" /></a>
+          <br/><br/>
       </header>
       <EventPrinter />
     </div>

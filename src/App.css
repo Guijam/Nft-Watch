@@ -1,6 +1,6 @@
 .App {
   text-align: center;
-  background-color: #71985d;
+  background-color: #425d2f;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -11,19 +11,40 @@
   padding-left: 30px;
   padding-right: 30px;
   padding-bottom: 30px;
+  padding-top: 30px;
   overflow-x: hidden;
-  font-family: "Roboto Mono", sans-serif;
+  font-family: monospace, "Roboto Mono", sans-serif;
 }
 
 .App-logo {
   position: absolute;
   width: 200px;
-  top: 10px;
+  top: 0px;
   left: 10px;
+}
+
+.Ps-logo {
+  width: 300px;
+  padding-right: 5em;
+  position: relative;
+  top: 10px;
+}
+
+.Nftkey-logo {
+width: 300px;
+  padding-left: 5em;
+  position: relative;
+  top: 10px;
+}
+.Title {
+  font-size: 4em;
+  font-weight: bold;
 }
 
 .App-header {
   margin-bottom: 16px;
+
+
 }
 
 .App-subtitle {
@@ -32,7 +53,7 @@
 }
 
 a {
-  color: rgb(161, 0, 24);
+  color: rgb(115, 72, 42);
 }
 
 h1 {
