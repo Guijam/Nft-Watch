@@ -65,15 +65,15 @@ const App: React.FC = () => {
         </a>
         <a href="https://paintswap.finance" target="_blank" rel="noreferrer"><img src="./img/ps-logo.png" alt="logo" className="Ps-logo" /></a>
         <span className="Title">
-          NFT-Watch
+          ♥ NFT-Watch ♥
         </span>
           <a href="https://nftkey.app/" target="_blank" rel="noreferrer"><img src="./img/nftkey-logo.svg" alt="logo" className="Nftkey-logo" /></a>
         <a href="https://https://nft-watch.vercel.app/#" target="_blank" rel="noreferrer"><Config>About</Config></a>
         <img src="../img/img.png" alt="logo" className="isuck" />
-          <br/><br/>___________________________________________<br/><br/>
+        <br/><br/><span className="bar">___________________________________________</span><br/><br/>
 
       </Header>
-      {length} collections watched !
+      <h1>{length} collections watched !</h1>
       <br/><br/>
         <Events>
             <EventPrinter />

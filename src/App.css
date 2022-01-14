@@ -34,20 +34,21 @@
 .Ps-logo {
 
   width: 250px;
-  padding-right: 6em;
-  padding-left: 5em;
+  padding-right: 4em;
+  padding-left: 4em;
   position: relative;
   top: 20px;
 }
 
 .Nftkey-logo {
 width: 250px;
-  padding-right: 6em;
-  padding-left: 6em;
+  padding-right: 4em;
+  padding-left: 4em;
   position: relative;
   top: 20px;
 }
 .Title {
+  text-align: center;
   font-size: 3em;
   font-weight: bold;
   position: relative;
@@ -56,8 +57,11 @@ width: 250px;
 
 .App-header {
   margin-bottom: 16px;
+}
 
-
+.bar {
+  position: relative;
+  left:20px;
 }
 
 .App-subtitle {
@@ -70,6 +74,8 @@ a {
 }
 
 h1 {
+  position: relative;
+  left:20px;
   margin-top: 50px;
   margin-bottom: 8px;
   font-size: calc(10px + 3vmin);
