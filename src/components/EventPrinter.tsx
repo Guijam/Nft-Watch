@@ -2,7 +2,13 @@ import React, { useEffect } from "react";
 import { ethers } from "ethers"
 import { MarketplaceV2, Sold, NewListing, Unsold, BundlePriceUpdate, DurationExtended, NewBid, NewOffer } from '@paintswap/marketplace-interactions'
 import styled from 'styled-components'
-import { short, getBalanceNumber, getBalanceString, timeConverter } from '../utils/helpers'
+import {
+  short,
+  getBalanceNumber,
+  getBalanceString,
+  timeConverter,
+  colName, recupCol,
+} from '../utils/helpers'
 import ChartCard from "./ChartCard";
 
 const provider = new ethers.providers.JsonRpcProvider(
@@ -109,7 +115,7 @@ const FeedContainer = styled.div`
   flex-direction: column;
   margin-top: 16px;
   width: 100%;
-  background-color: #131318;
+  background-color: rgba(40, 59, 28, 0.63);
   border-radius: 20px;
   padding-bottom: 24px;
 `
@@ -170,9 +176,14 @@ const EventPrinter = () => {
   // For the chart
   const [chartVolume, setChartVolume] = React.useState<Array<any>>([])
 
+  recupCol()
+
+  // @ts-ignore
   useEffect(() => {
     if (!init) {
       console.log("Start listening")
+
+
       marketplace.onNewListing((item) => {
         console.log('New listing!\n', item)
 
@@ -181,7 +192,7 @@ const EventPrinter = () => {
         if (listingFeed.length > maxFeedCount) listingFeed.pop()
         setListingFeed([...listingFeed])
       })
-    
+
       marketplace.onSold((item) => {
         console.log('Sold!\n', item)
 
@@ -202,14 +213,13 @@ const EventPrinter = () => {
 
       marketplace.onUnsold((item, cancelled) => {
         if (cancelled) {
-            console.log('Cancelled sale\n', item)
-            const itemExt: UnsoldExt = Object.assign({}, item, {cancelled: true, time: timeConverter(Date.now() / 1000)})
-            unsoldFeed.unshift(itemExt)
-        }
-        else {
-            console.log('Failed to sell\n', item)
-            const itemExt: UnsoldExt = Object.assign({}, item, {cancelled: false, time: timeConverter(Date.now() / 1000)})
-            unsoldFeed.unshift(itemExt)
+          console.log('Cancelled sale\n', item)
+          const itemExt: UnsoldExt = Object.assign({}, item, {cancelled: true, time: timeConverter(Date.now() / 1000)})
+          unsoldFeed.unshift(itemExt)
+        } else {
+          console.log('Failed to sell\n', item)
+          const itemExt: UnsoldExt = Object.assign({}, item, {cancelled: false, time: timeConverter(Date.now() / 1000)})
+          unsoldFeed.unshift(itemExt)
         }
         if (unsoldFeed.length > maxFeedCount) unsoldFeed.pop()
         setUnsoldFeed([...unsoldFeed])
@@ -217,13 +227,13 @@ const EventPrinter = () => {
 
       marketplace.onPriceUpdate((item) => {
         console.log('Price updated\n', item)
-    
+
         const itemExt: BundlePriceUpdateExt = Object.assign({}, item, {time: timeConverter(Date.now() / 1000)})
         priceUpdateFeed.unshift(itemExt)
         if (priceUpdateFeed.length > maxFeedCount) priceUpdateFeed.pop()
         setPriceUpdateFeed([...priceUpdateFeed])
       })
-    
+
       marketplace.onNewBid((bid) => {
         console.log('New bid\n', bid)
 
@@ -232,7 +242,7 @@ const EventPrinter = () => {
         if (bidFeed.length > maxFeedCount) bidFeed.pop()
         setBidFeed([...bidFeed])
       })
-    
+
       marketplace.onNewOffer((offer) => {
         console.log('New offer\n', offer)
 
@@ -255,245 +265,260 @@ const EventPrinter = () => {
   }, [init, listingFeed, soldFeed, unsoldFeed, priceUpdateFeed, durationExtendedFeed, bidFeed, offerFeed, chartVolume])
 
   return (
-    <Body>
-      <ListContainer>
-        {/** LISTINGS */}
-        <FeedContainer>
-          <p>LISTING</p>
-          <Feed>
-            {listingFeed && listingFeed.map((item: NewListingExt, index: number) => (
-                <FeedSection key={index}>
-                  <SectionRow>
-                    <SpanHeader><a href={`${mainUrl}${item.marketplaceId.toString()}`} target="_blank" rel="noreferrer">{item.marketplaceId.toString()}</a></SpanHeader>
-                    <SpanMain>{item.time}</SpanMain>
-                  </SectionRow>
-                  <SectionRow>
-                    <SpanMain>Collection</SpanMain>
-                    <SpanMain><a href={`${mainUrl}collections/${item.collection.toLowerCase()}`} target="_blank" rel="noreferrer">{short(item.collection.toLowerCase())}</a></SpanMain>
-                  </SectionRow>
-                  <SectionRow>
-                    <SpanMain>Token ID</SpanMain>
-                    <SpanMain><a href={`${mainUrl}assets/${item.collection.toLowerCase()}/${item.tokenID.toString()}`} target="_blank" rel="noreferrer">{item.tokenID.toString()}</a></SpanMain>
-                  </SectionRow>
-                  <SectionRow>
-                    <SpanMain>Type</SpanMain>
-                    <SpanMain>{item.isAuction ? 'Auction' : 'Sale'}</SpanMain>
-                  </SectionRow>
-                  <SectionRow>
-                    <SpanMain>Duration</SpanMain>
-                    <SpanMain>{`${item.duration.toNumber() / 3600}h`}</SpanMain>
-                  </SectionRow>
-                  {item.amount.toNumber() > 1 && (
-                  <>
+      <Body>
+        <ListContainer>
+          {/** LISTINGS */}
+          <FeedContainer>
+            <p>LISTING</p>
+            <Feed>
+              {listingFeed && listingFeed.map((item: NewListingExt, index: number) => (
+                  <FeedSection key={index}>
                     <SectionRow>
-                      <SpanMain>Amount</SpanMain>
-                      <SpanMain>{item.amount.toString()}</SpanMain>
+                      <SpanHeader><a href={`${mainUrl}${item.marketplaceId.toString()}`} target="_blank"
+                                     rel="noreferrer">{item.marketplaceId.toString()}</a></SpanHeader>
+                      <SpanMain>{item.time}</SpanMain>
                     </SectionRow>
                     <SectionRow>
-                      <SpanMain>Unit Price</SpanMain>
-                      <SpanMain>{getBalanceString(item.pricePerUnit)}</SpanMain>
-                    </SectionRow>
-                  </>
-                  )}
-                  <SectionRow>
-                    <SpanMain>{`${item.amount.toNumber() > 1 ? 'Total Price' : 'Price'}`}</SpanMain>
-                    <SpanMain>{getBalanceString(item.priceTotal)}</SpanMain>
-                  </SectionRow>
-                  <Divider/>
-                </FeedSection>
-            ))}
-            {!listingFeed.length && (
-              <SpanHeader>Waiting for events...</SpanHeader>
-            )}
-          </Feed>
-        </FeedContainer>
-
-        {/** SOLD */}
-        <FeedContainer>
-        <p>SOLD</p>
-          <Feed>
-            {soldFeed && soldFeed.map((item: SoldExt, index: number) => (
-              <FeedSection key={index}>
-                <SectionRow>
-                  <SpanHeader><a href={`${mainUrl}${item.marketplaceId.toString()}`} target="_blank" rel="noreferrer">{item.marketplaceId.toString()}</a></SpanHeader>
-                  <SpanMain>{item.time}</SpanMain>
-                </SectionRow>
-                <SectionRow>
-                  <SpanMain>Collection</SpanMain>
-                  <SpanMain><a href={`${mainUrl}collections/${item.collection.toLowerCase()}`} target="_blank" rel="noreferrer">{short(item.collection.toLowerCase())}</a></SpanMain>
-                </SectionRow>
-                <SectionRow>
-                  <SpanMain>Token ID</SpanMain>
-                  <SpanMain><a href={`${mainUrl}assets/${item.collection.toLowerCase()}/${item.tokenID.toString()}`} target="_blank" rel="noreferrer">{item.tokenID.toString()}</a></SpanMain>
-                </SectionRow>
-                {item.amount.toNumber() > 1 && (
-                  <>
-                    <SectionRow>
-                      <SpanMain>Amount</SpanMain>
-                      <SpanMain>{item.amount.toString()}</SpanMain>
+                      <SpanMain>Collection</SpanMain>
+                      <SpanMain><a href={`${mainUrl}collections/${item.collection.toLowerCase()}`} target="_blank"
+                                   rel="noreferrer">{colName(item.collection.toLowerCase())}</a></SpanMain>
                     </SectionRow>
                     <SectionRow>
-                      <SpanMain>Unit Price</SpanMain>
-                      <SpanMain>{getBalanceString(item.pricePerUnit)}</SpanMain>
+                      <SpanMain>Token ID</SpanMain>
+                      <SpanMain><a href={`${mainUrl}assets/${item.collection.toLowerCase()}/${item.tokenID.toString()}`}
+                                   target="_blank" rel="noreferrer">{item.tokenID.toString()}</a></SpanMain>
                     </SectionRow>
-                  </>
-                )}
-                <SectionRow>
-                  <SpanMain>{`${item.amount.toNumber() > 1 ? 'Total Price' : 'Price'}`}</SpanMain>
-                  <SpanMain>{getBalanceString(item.priceTotal)}</SpanMain>
-                </SectionRow>
-                <Divider/>
-              </FeedSection>
-            ))}
-            {!soldFeed.length && (
-              <SpanHeader>Waiting for events...</SpanHeader>
-            )}
-          </Feed>
-        </FeedContainer>
+                    <SectionRow>
+                      <SpanMain>Type</SpanMain>
+                      <SpanMain>{item.isAuction ? 'Auction' : 'Sale'}</SpanMain>
+                    </SectionRow>
+                    <SectionRow>
+                      <SpanMain>Duration</SpanMain>
+                      <SpanMain>{`${item.duration.toNumber() / 3600}h`}</SpanMain>
+                    </SectionRow>
+                    {item.amount.toNumber() > 1 && (
+                        <>
+                          <SectionRow>
+                            <SpanMain>Amount</SpanMain>
+                            <SpanMain>{item.amount.toString()}</SpanMain>
+                          </SectionRow>
+                          <SectionRow>
+                            <SpanMain>Unit Price</SpanMain>
+                            <SpanMain>{getBalanceString(item.pricePerUnit)}</SpanMain>
+                          </SectionRow>
+                        </>
+                    )}
+                    <SectionRow>
+                      <SpanMain>{`${item.amount.toNumber() > 1 ? 'Total Price' : 'Price'}`}</SpanMain>
+                      <SpanMain>{getBalanceString(item.priceTotal)}</SpanMain>
+                    </SectionRow>
+                    <Divider/>
+                  </FeedSection>
+              ))}
+              {!listingFeed.length && (
+                  <SpanHeader>Waiting for events...</SpanHeader>
+              )}
+            </Feed>
+          </FeedContainer>
 
-        {/** UNSOLD */}
-        <FeedContainer>
-          <p>UNSOLD</p>
-          <Feed>
-            {unsoldFeed && unsoldFeed.map((item: UnsoldExt, index: number) => (
-              <FeedSection key={index}>
-                <SectionRow>
-                  <SpanHeader><a href={`${mainUrl}${item.marketplaceId.toString()}`} target="_blank" rel="noreferrer">{item.marketplaceId.toString()}</a></SpanHeader>
-                  <SpanMain>{item.time}</SpanMain>
-                </SectionRow>
-                <SectionRow>
-                  <SpanMain>Reason</SpanMain>
-                  <SpanMain>{item.cancelled ? 'Cancelled' : 'Expired'}</SpanMain>
-                </SectionRow>
-                <SectionRow>
-                  <SpanMain>Collection</SpanMain>
-                  <SpanMain><a href={`${mainUrl}collections/${item.collection.toLowerCase()}`} target="_blank" rel="noreferrer">{short(item.collection.toLowerCase())}</a></SpanMain>
-                </SectionRow>
-                <SectionRow>
-                  <SpanMain>Token ID</SpanMain>
-                  <SpanMain><a href={`${mainUrl}assets/${item.collection.toLowerCase()}/${item.tokenID.toString()}`} target="_blank" rel="noreferrer">{item.tokenID.toString()}</a></SpanMain>
-                </SectionRow>
-                <Divider/>
-              </FeedSection>
-            ))}
-            {!unsoldFeed.length && (
-              <SpanHeader>Waiting for events...</SpanHeader>
-            )}
-          </Feed>
-        </FeedContainer>
+          {/** SOLD */}
+          <FeedContainer>
+            <p>SOLD</p>
+            <Feed>
+              {soldFeed && soldFeed.map((item: SoldExt, index: number) => (
+                  <FeedSection key={index}>
+                    <SectionRow>
+                      <SpanHeader><a href={`${mainUrl}${item.marketplaceId.toString()}`} target="_blank"
+                                     rel="noreferrer">{item.marketplaceId.toString()}</a></SpanHeader>
+                      <SpanMain>{item.time}</SpanMain>
+                    </SectionRow>
+                    <SectionRow>
+                      <SpanMain>Collection</SpanMain>
+                      <SpanMain><a href={`${mainUrl}collections/${item.collection.toLowerCase()}`} target="_blank"
+                                   rel="noreferrer">{short(colName(item.collection.toLowerCase()))}</a></SpanMain>
+                    </SectionRow>
+                    <SectionRow>
+                      <SpanMain>Token ID</SpanMain>
+                      <SpanMain><a href={`${mainUrl}assets/${item.collection.toLowerCase()}/${item.tokenID.toString()}`}
+                                   target="_blank" rel="noreferrer">{item.tokenID.toString()}</a></SpanMain>
+                    </SectionRow>
+                    {item.amount.toNumber() > 1 && (
+                        <>
+                          <SectionRow>
+                            <SpanMain>Amount</SpanMain>
+                            <SpanMain>{item.amount.toString()}</SpanMain>
+                          </SectionRow>
+                          <SectionRow>
+                            <SpanMain>Unit Price</SpanMain>
+                            <SpanMain>{getBalanceString(item.pricePerUnit)}</SpanMain>
+                          </SectionRow>
+                        </>
+                    )}
+                    <SectionRow>
+                      <SpanMain>{`${item.amount.toNumber() > 1 ? 'Total Price' : 'Price'}`}</SpanMain>
+                      <SpanMain>{getBalanceString(item.priceTotal)}</SpanMain>
+                    </SectionRow>
+                    <Divider/>
+                  </FeedSection>
+              ))}
+              {!soldFeed.length && (
+                  <SpanHeader>Waiting for events...</SpanHeader>
+              )}
+            </Feed>
+          </FeedContainer>
 
-        {/** PRICE UPDATE */}
-        <FeedContainer>
-        <p>PRICE UPDATE</p>
-          <Feed>
-            {priceUpdateFeed && priceUpdateFeed.map((item: BundlePriceUpdateExt, index: number) => (
-              <FeedSection key={index}>
-                <SectionRow>
-                  <SpanHeader><a href={`${mainUrl}${item.marketplaceId.toString()}`} target="_blank" rel="noreferrer">{item.marketplaceId.toString()}</a></SpanHeader>
-                  <SpanMain>{item.time}</SpanMain>
-                </SectionRow>
-                <SectionRow>
-                  <SpanMain>New Price</SpanMain>
-                  <SpanMain>{getBalanceString(item.price)}</SpanMain>
-                </SectionRow>
-                <Divider/>
-              </FeedSection>
-            ))}
-            {!priceUpdateFeed.length && (
-              <SpanHeader>Waiting for events...</SpanHeader>
-            )}
-          </Feed>
-        </FeedContainer>
+          {/** UNSOLD */}
+          <FeedContainer>
+            <p>UNSOLD</p>
+            <Feed>
+              {unsoldFeed && unsoldFeed.map((item: UnsoldExt, index: number) => (
+                  <FeedSection key={index}>
+                    <SectionRow>
+                      <SpanHeader><a href={`${mainUrl}${item.marketplaceId.toString()}`} target="_blank"
+                                     rel="noreferrer">{item.marketplaceId.toString()}</a></SpanHeader>
+                      <SpanMain>{item.time}</SpanMain>
+                    </SectionRow>
+                    <SectionRow>
+                      <SpanMain>Reason</SpanMain>
+                      <SpanMain>{item.cancelled ? 'Cancelled' : 'Expired'}</SpanMain>
+                    </SectionRow>
+                    <SectionRow>
+                      <SpanMain>Collection</SpanMain>
+                      <SpanMain><a href={`${mainUrl}collections/${item.collection.toLowerCase()}`} target="_blank"
+                                   rel="noreferrer">{short(colName(item.collection.toLowerCase()))}</a></SpanMain>
+                    </SectionRow>
+                    <SectionRow>
+                      <SpanMain>Token ID</SpanMain>
+                      <SpanMain><a href={`${mainUrl}assets/${item.collection.toLowerCase()}/${item.tokenID.toString()}`}
+                                   target="_blank" rel="noreferrer">{item.tokenID.toString()}</a></SpanMain>
+                    </SectionRow>
+                    <Divider/>
+                  </FeedSection>
+              ))}
+              {!unsoldFeed.length && (
+                  <SpanHeader>Waiting for events...</SpanHeader>
+              )}
+            </Feed>
+          </FeedContainer>
 
-        {/** BIDS */}
-        <FeedContainer>
-        <p>BIDS</p>
-          <Feed>
-            {bidFeed && bidFeed.map((item: NewBidExt, index: number) => (
-              <FeedSection key={index}>
-                <SectionRow>
-                  <SpanHeader><a href={`${mainUrl}${item.marketplaceId.toString()}`} target="_blank" rel="noreferrer">{item.marketplaceId.toString()}</a></SpanHeader>
-                  <SpanMain>{item.time}</SpanMain>
-                </SectionRow>
-                <SectionRow>
-                  <SpanMain>Bidder</SpanMain>
-                  <SpanMain><a href={`${mainUrl}user/${item.bidder.toLowerCase()}`} target="_blank" rel="noreferrer">{short(item.bidder)}</a></SpanMain>
-                </SectionRow>
-                <SectionRow>
-                  <SpanMain>Bid</SpanMain>
-                  <SpanMain>{getBalanceString(item.bid)}</SpanMain>
-                </SectionRow>
-                <SectionRow>
-                  <SpanMain>Next Minimum</SpanMain>
-                  <SpanMain>{getBalanceString(item.nextMinimum)}</SpanMain>
-                </SectionRow>
-                <Divider/>
-              </FeedSection>
-            ))}
-            {!bidFeed.length && (
-              <SpanHeader>Waiting for events...</SpanHeader>
-            )}
-          </Feed>
-        </FeedContainer>
+          {/** PRICE UPDATE */}
+          <FeedContainer>
+            <p>PRICE UPDATE</p>
+            <Feed>
+              {priceUpdateFeed && priceUpdateFeed.map((item: BundlePriceUpdateExt, index: number) => (
+                  <FeedSection key={index}>
+                    <SectionRow>
+                      <SpanHeader><a href={`${mainUrl}${item.marketplaceId.toString()}`} target="_blank"
+                                     rel="noreferrer">{item.marketplaceId.toString()}</a></SpanHeader>
+                      <SpanMain>{item.time}</SpanMain>
+                    </SectionRow>
+                    <SectionRow>
+                      <SpanMain>New Price</SpanMain>
+                      <SpanMain>{getBalanceString(item.price)}</SpanMain>
+                    </SectionRow>
+                    <Divider/>
+                  </FeedSection>
+              ))}
+              {!priceUpdateFeed.length && (
+                  <SpanHeader>Waiting for events...</SpanHeader>
+              )}
+            </Feed>
+          </FeedContainer>
 
-        {/** OFFERS */}
-        <FeedContainer>
-        <p>OFFERS</p>
-          <Feed>
-            {offerFeed && offerFeed.map((item: NewOfferExt, index: number) => (
-              <FeedSection key={index}>
-                <SectionRow>
-                  <SpanHeader><a href={`${mainUrl}${item.marketplaceId.toString()}`} target="_blank" rel="noreferrer">{item.marketplaceId.toString()}</a></SpanHeader>
-                  <SpanMain>{item.time}</SpanMain>
-                </SectionRow>
-                <SectionRow>
-                  <SpanMain>Offerer</SpanMain>
-                  <SpanMain><a href={`${mainUrl}user/${item.offerrer.toLowerCase()}`} target="_blank" rel="noreferrer">{short(item.offerrer)}</a></SpanMain>
-                </SectionRow>
-                <SectionRow>
-                  <SpanMain>Offer</SpanMain>
-                  <SpanMain>{getBalanceString(item.offer)}</SpanMain>
-                </SectionRow>
-                <SectionRow>
-                  <SpanMain>Next Minimum</SpanMain>
-                  <SpanMain>{getBalanceString(item.nextMinimum)}</SpanMain>
-                </SectionRow>
-                <Divider/>
-              </FeedSection>
-            ))}
-            {!offerFeed.length && (
-              <SpanHeader>Waiting for events...</SpanHeader>
-            )}
-          </Feed>
-        </FeedContainer>
+          {/** BIDS */}
+          <FeedContainer>
+            <p>BIDS</p>
+            <Feed>
+              {bidFeed && bidFeed.map((item: NewBidExt, index: number) => (
+                  <FeedSection key={index}>
+                    <SectionRow>
+                      <SpanHeader><a href={`${mainUrl}${item.marketplaceId.toString()}`} target="_blank"
+                                     rel="noreferrer">{item.marketplaceId.toString()}</a></SpanHeader>
+                      <SpanMain>{item.time}</SpanMain>
+                    </SectionRow>
+                    <SectionRow>
+                      <SpanMain>Bidder</SpanMain>
+                      <SpanMain><a href={`${mainUrl}user/${item.bidder.toLowerCase()}`} target="_blank"
+                                   rel="noreferrer">{short(item.bidder)}</a></SpanMain>
+                    </SectionRow>
+                    <SectionRow>
+                      <SpanMain>Bid</SpanMain>
+                      <SpanMain>{getBalanceString(item.bid)}</SpanMain>
+                    </SectionRow>
+                    <SectionRow>
+                      <SpanMain>Next Minimum</SpanMain>
+                      <SpanMain>{getBalanceString(item.nextMinimum)}</SpanMain>
+                    </SectionRow>
+                    <Divider/>
+                  </FeedSection>
+              ))}
+              {!bidFeed.length && (
+                  <SpanHeader>Waiting for events...</SpanHeader>
+              )}
+            </Feed>
+          </FeedContainer>
 
-        {/** AUCTIONS EXTENDED*/}
-        <FeedContainer>
-        <p>AUCTION CHANGE</p>
-          <Feed>
-            {durationExtendedFeed && durationExtendedFeed.map((item: DurationExtendedExt, index: number) => (
-              <FeedSection key={index}>
-                <SectionRow>
-                  <SpanHeader><a href={`${mainUrl}${item.marketplaceId.toString()}`} target="_blank" rel="noreferrer">{item.marketplaceId.toString()}</a></SpanHeader>
-                  <SpanMain>{item.time}</SpanMain>
-                </SectionRow>
-                <SectionRow>
-                  <SpanMain>End Time</SpanMain>
-                  <SpanMain>{timeConverter(item.endTime.toNumber())}</SpanMain>
-                </SectionRow>
-                <Divider/>
-              </FeedSection>
-            ))}
-            {!durationExtendedFeed.length && (
-              <SpanHeader>Waiting for events...</SpanHeader>
-            )}
-          </Feed>
-        </FeedContainer>
-      </ListContainer>
-      <ChartArea>
-        <ChartCard volume={chartVolume} />
-      </ChartArea>
-    </Body>
+          {/** OFFERS */}
+          <FeedContainer>
+            <p>OFFERS</p>
+            <Feed>
+              {offerFeed && offerFeed.map((item: NewOfferExt, index: number) => (
+                  <FeedSection key={index}>
+                    <SectionRow>
+                      <SpanHeader><a href={`${mainUrl}${item.marketplaceId.toString()}`} target="_blank"
+                                     rel="noreferrer">{item.marketplaceId.toString()}</a></SpanHeader>
+                      <SpanMain>{item.time}</SpanMain>
+                    </SectionRow>
+                    <SectionRow>
+                      <SpanMain>Offerer</SpanMain>
+                      <SpanMain><a href={`${mainUrl}user/${item.offerrer.toLowerCase()}`} target="_blank"
+                                   rel="noreferrer">{short(item.offerrer)}</a></SpanMain>
+                    </SectionRow>
+                    <SectionRow>
+                      <SpanMain>Offer</SpanMain>
+                      <SpanMain>{getBalanceString(item.offer)}</SpanMain>
+                    </SectionRow>
+                    <SectionRow>
+                      <SpanMain>Next Minimum</SpanMain>
+                      <SpanMain>{getBalanceString(item.nextMinimum)}</SpanMain>
+                    </SectionRow>
+                    <Divider/>
+                  </FeedSection>
+              ))}
+              {!offerFeed.length && (
+                  <SpanHeader>Waiting for events...</SpanHeader>
+              )}
+            </Feed>
+          </FeedContainer>
+
+          {/** AUCTIONS EXTENDED*/}
+          <FeedContainer>
+            <p>AUCTION CHANGE</p>
+            <Feed>
+              {durationExtendedFeed && durationExtendedFeed.map((item: DurationExtendedExt, index: number) => (
+                  <FeedSection key={index}>
+                    <SectionRow>
+                      <SpanHeader><a href={`${mainUrl}${item.marketplaceId.toString()}`} target="_blank"
+                                     rel="noreferrer">{item.marketplaceId.toString()}</a></SpanHeader>
+                      <SpanMain>{item.time}</SpanMain>
+                    </SectionRow>
+                    <SectionRow>
+                      <SpanMain>End Time</SpanMain>
+                      <SpanMain>{timeConverter(item.endTime.toNumber())}</SpanMain>
+                    </SectionRow>
+                    <Divider/>
+                  </FeedSection>
+              ))}
+              {!durationExtendedFeed.length && (
+                  <SpanHeader>Waiting for events...</SpanHeader>
+              )}
+            </Feed>
+          </FeedContainer>
+        </ListContainer>
+        <ChartArea>
+          <ChartCard volume={chartVolume}/>
+        </ChartArea>
+      </Body>
   )
 }
 

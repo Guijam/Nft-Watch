@@ -1,8 +1,9 @@
 .App {
   text-align: center;
-  background-color: #425d2f;
+  background-image: url("./bg.jpeg");
+  /*background-color: rgba(66, 93, 47, 0);*/
   min-height: 100vh;
-  display: flex;
+  display: block;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
@@ -19,26 +20,38 @@
 .App-logo {
   position: absolute;
   width: 200px;
-  top: 0px;
+  top: 15px;
   left: 10px;
 }
 
+.isuck {
+  position: absolute;
+  width: 200px;
+  top: 15px;
+  right: 10px;
+}
+
 .Ps-logo {
-  width: 300px;
-  padding-right: 5em;
+
+  width: 250px;
+  padding-right: 6em;
+  padding-left: 5em;
   position: relative;
-  top: 10px;
+  top: 20px;
 }
 
 .Nftkey-logo {
-width: 300px;
-  padding-left: 5em;
+width: 250px;
+  padding-right: 6em;
+  padding-left: 6em;
   position: relative;
-  top: 10px;
+  top: 20px;
 }
 .Title {
-  font-size: 4em;
+  font-size: 3em;
   font-weight: bold;
+  position: relative;
+  top: 10px;
 }
 
 .App-header {
@@ -53,7 +66,7 @@ width: 300px;
 }
 
 a {
-  color: rgb(115, 72, 42);
+  color: rgb(27, 217, 211);
 }
 
 h1 {

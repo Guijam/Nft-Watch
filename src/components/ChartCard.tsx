@@ -6,7 +6,7 @@ import { Area, CartesianGrid, XAxis, YAxis, Tooltip, ResponsiveContainer, Compos
 const ChartContainer = styled.div`
   display: flex;
   flex-direction: column;
-  background-color: #131318;
+  background-color: rgba(93, 73, 62, 0.63);
   border-radius: 20px;
   padding: 16px;
   margin-top: 60px;
@@ -17,9 +17,9 @@ const StyledCard = styled.div`
   display: flex;
   flex-direction: column;
   border-radius: 20px;
-  background-color: #161326;
-  border: 1px solid #595da1;
-  color: #7d8fd1;
+  background-color: #7a73bb;
+  border: 1px solid #9a813d;
+  color: #d1aa7d;
   padding: 10px;
 `
 
@@ -41,7 +41,7 @@ const SpanHeader = styled.span`
 `
 const SpanMain = styled.span`
   font-size: 12px;
-  color: #7d8fd1;
+  color: #364164;
   margin-bottom: 4px;
 `
 
