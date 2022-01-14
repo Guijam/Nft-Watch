@@ -150,7 +150,7 @@ const SpanHeader = styled.span`
   margin-bottom: 8px;
 `
 const SpanMain = styled.span`
-  font-size: 14px;
+  font-size: 16px;
   color: #7d8fd1;
 `
 
@@ -335,7 +335,7 @@ const EventPrinter = () => {
                     <SectionRow>
                       <SpanMain>Collection</SpanMain>
                       <SpanMain><a href={`${mainUrl}collections/${item.collection.toLowerCase()}`} target="_blank"
-                                   rel="noreferrer">{short(colName(item.collection.toLowerCase()))}</a></SpanMain>
+                                   rel="noreferrer">{colName(item.collection.toLowerCase())}</a></SpanMain>
                     </SectionRow>
                     <SectionRow>
                       <SpanMain>Token ID</SpanMain>
@@ -385,7 +385,7 @@ const EventPrinter = () => {
                     <SectionRow>
                       <SpanMain>Collection</SpanMain>
                       <SpanMain><a href={`${mainUrl}collections/${item.collection.toLowerCase()}`} target="_blank"
-                                   rel="noreferrer">{short(colName(item.collection.toLowerCase()))}</a></SpanMain>
+                                   rel="noreferrer">{colName(item.collection.toLowerCase())}</a></SpanMain>
                     </SectionRow>
                     <SectionRow>
                       <SpanMain>Token ID</SpanMain>
