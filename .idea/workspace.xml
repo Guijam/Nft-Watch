@@ -82,8 +82,8 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="npm.build" />
       <item itemvalue="npm.deploy" />
+      <item itemvalue="npm.build" />
       <item itemvalue="npm.predeploy" />
       <item itemvalue="npm.start" />
     </list>
