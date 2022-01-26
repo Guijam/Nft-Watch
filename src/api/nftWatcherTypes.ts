@@ -82,6 +82,48 @@ export interface Stats {
     activeSales:number
 }
 
+export interface Sale {
+    address: string,
+    addresses: [
+        string
+    ],
+    amount: number,
+    amountBatches: [
+        number
+    ],
+    amountRemaining: number,
+    complete: boolean,
+    endTime: number,
+    id: string,
+    isAuction: boolean,
+    isERC721s: [
+        boolean
+    ],
+    isNSFW: boolean,
+    marketplaceURI: string,
+    maxBid: number,
+    maxBidder: string,
+    maxOffer: number,
+    maxOfferer: string,
+    nextMinimum: number,
+    price: number,
+    seller: string,
+    sold: boolean,
+    startTime: number,
+    tokenId: number,
+    tokenIds: [
+        number
+    ],
+    version: number,
+    minBid: number,
+    minOffer: number,
+    isERC721: boolean,
+    contractVerified: boolean,
+    subgraphIndex: number,
+    verified: boolean,
+    contentVerified: boolean
+}
+
 export interface Collection {
     id: string,
     createdAt: string,
