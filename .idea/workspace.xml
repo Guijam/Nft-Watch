@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="5efbbbf8-36ae-4229-bd30-ddbb1073a3cc" name="Changes" comment="bug build2">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,10 +34,7 @@
       <scripts>
         <script value="build" />
       </scripts>
-      <arguments value="--scripts-prepend-node-path" />
       <node-interpreter value="project" />
-      <node-options value="--scripts-prepend-node-path" />
-      <package-manager value="C:\Users\Guibole\AppData\Roaming\npm\node_modules\npm" />
       <envs />
       <method v="2" />
     </configuration>
@@ -65,10 +64,8 @@
       <scripts>
         <script value="start" />
       </scripts>
-      <arguments value="--scripts-prepend-node-path" />
       <node-interpreter value="project" />
-      <node-options value="--scripts-prepend-node-path" />
-      <package-manager value="C:\Users\Guibole\AppData\Roaming\npm\node_modules\npm" />
+      <package-manager value="npm" />
       <envs />
       <method v="2" />
     </configuration>
@@ -144,7 +141,14 @@
       <option name="project" value="LOCAL" />
       <updated>1643183967150</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="bug build2">
+      <created>1643184135084</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1643184135084</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
