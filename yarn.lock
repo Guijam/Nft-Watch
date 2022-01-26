@@ -9662,6 +9662,11 @@ react-resize-detector@^6.6.3:
     lodash "^4.17.21"
     resize-observer-polyfill "^1.5.1"
 
+react-script@^2.0.5:
+  version "2.0.5"
+  resolved "https://registry.yarnpkg.com/react-script/-/react-script-2.0.5.tgz#9dac20f97cff1fb40f5b4084e3f44b82e3001572"
+  integrity sha1-nawg+Xz/H7QPW0CE4/RLguMAFXI=
+
 react-smooth@^2.0.0:
   version "2.0.0"
   resolved "https://registry.npmjs.org/react-smooth/-/react-smooth-2.0.0.tgz"
