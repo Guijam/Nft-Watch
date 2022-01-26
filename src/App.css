@@ -43,14 +43,15 @@
 .Nftkey-logo {
 width: 250px;
   padding-right: 4em;
-  padding-left: 4em;
+  padding-left: 5em;
   position: relative;
   top: 20px;
 }
 .Title {
+  font-family: Skinny,Enliven,"High Tower Text",Skinny,monospace;
   text-align: center;
   font-size: 3em;
-  font-weight: bold;
+  font-weight: normal;
   position: relative;
   top: 10px;
 }
@@ -74,14 +75,25 @@ a {
 }
 
 h1 {
-  position: relative;
+  /*position: relative;*/
   left:20px;
-  margin-top: 50px;
+  text-align: center;
   margin-bottom: 8px;
   font-size: calc(10px + 3vmin);
+}
+
+h2  {
+  text-align: center;
+  font-size: xx-large;
+  margin-bottom:unset;
+
 }
 
 p {
   margin: 16px 0 8px 0;
   font-size: calc(10px + 1.5vmin);
+}
+
+ul {
+  text-align: left;
 }
