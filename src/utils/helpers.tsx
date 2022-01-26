@@ -1,15 +1,14 @@
 import { ethers } from "ethers"
-import {useEffect, useState} from "react";
-import {Collection} from "../api/nftWatcherTypes";
 
-let collections:Collection[];
 
-export const recupCol:() => Promise<Collection[]> = async () => {
-  const res = await fetch('https://api.paintswap.finance/v2/collections');
-  const cols = await res.json();
-  collections=cols.collections
-  return collections;
-}
+// let collections:Collection[];
+//
+// const recupCol:() => Promise<Collection[]> = async () => {
+//   const res = await fetch('https://api.paintswap.finance/v2/collections');
+//   const cols = await res.json();
+//   collections=cols.collections
+//   return collections;
+// }
 
 const firstFew = (address: string) => {
   return address.substring(0, 6)
@@ -39,13 +38,4 @@ export const timeConverter = (timestamp: number) => {
   const hour = `0${a.getHours().toString()}`.slice(-2)
   const min = `0${a.getMinutes().toString()}`.slice(-2)
   return month + ' ' + date + ' - ' + hour + ':' + min
-}
-
-export function colName(address: string) {
-  let cols = collections.filter(
-      function (data: Collection) {
-        return data.id.toLowerCase() == address.toLowerCase() ? data : null
-      }
-  )
-  return cols[0].name
 }
