@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7d29a675-b2c0-41fe-9118-f6137a11bfb3" name="Changes" comment="ok ?">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="7d29a675-b2c0-41fe-9118-f6137a11bfb3" name="Changes" comment="update node">
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -40,6 +39,7 @@
       <option name="presentableId" value="Default" />
       <updated>1643192745320</updated>
       <workItem from="1643192751506" duration="1231000" />
+      <workItem from="1643194134593" duration="269000" />
     </task>
     <task id="LOCAL-00001" summary="ok ?">
       <created>1643193063275</created>
@@ -55,7 +55,14 @@
       <option name="project" value="LOCAL" />
       <updated>1643193311044</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="update node">
+      <created>1643194175777</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1643194175777</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -75,6 +82,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="ok ?" />
-    <option name="LAST_COMMIT_MESSAGE" value="ok ?" />
+    <MESSAGE value="update node" />
+    <option name="LAST_COMMIT_MESSAGE" value="update node" />
   </component>
 </project>
