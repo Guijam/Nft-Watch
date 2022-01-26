@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7d29a675-b2c0-41fe-9118-f6137a11bfb3" name="Changes" comment="update node">
+    <list default="true" id="7d29a675-b2c0-41fe-9118-f6137a11bfb3" name="Changes" comment="update node AND eslint ffs">
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -39,7 +39,7 @@
       <option name="presentableId" value="Default" />
       <updated>1643192745320</updated>
       <workItem from="1643192751506" duration="1231000" />
-      <workItem from="1643194134593" duration="269000" />
+      <workItem from="1643194134593" duration="501000" />
     </task>
     <task id="LOCAL-00001" summary="ok ?">
       <created>1643193063275</created>
@@ -62,7 +62,14 @@
       <option name="project" value="LOCAL" />
       <updated>1643194175777</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="update node AND eslint ffs">
+      <created>1643194431881</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1643194431881</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -83,6 +90,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="ok ?" />
     <MESSAGE value="update node" />
-    <option name="LAST_COMMIT_MESSAGE" value="update node" />
+    <MESSAGE value="update node AND eslint ffs" />
+    <option name="LAST_COMMIT_MESSAGE" value="update node AND eslint ffs" />
   </component>
 </project>
