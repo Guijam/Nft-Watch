@@ -53,11 +53,13 @@ const About: React.FC = () => {
                 <br/>-----------------------<br/>
                 <strong>Upcoming</strong><br/>
                 <ul>
-                    <li>Wallets watching, to enjoy the sweet sound of your sales !</li>
+                    <li>Various QoL improvements, for those as lazy as I am...</li>
+                    <li>Wallets watching, to enjoy the sweet sound of your own sales !</li>
                     <li>Collection blacklisting, because you care about everything, except maybe for those weird and
                     useless <HiddenLink href="https://paintswap.finance/marketplace/collections/0x4d7531a9ab03454e2812ce78872e011ccc49cba9">bags of air</HiddenLink>...</li>
                     <li>Metamask integration, or at least some way to save your settings...</li>
                     <li>Featured collections, to have a look at something else than those damn sheeps and robots...</li>
+                    <li>NFT-Key integration, for MORE NFTs watched !</li>
                     <li>Coffee-making, you should get some NFT-mug though...</li>
                     <li>And more ! Probably. Some day...</li>
                 </ul><br/>
