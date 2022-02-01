@@ -102,8 +102,6 @@ const App: React.FC = () => {
 
     }, []);
 
-    // let updateApp:((cw:string[], ci:string[], w:string[],r:string) => void);
-
     const updateApp = (cw:string[], ci:string[], w:string[],r:string) => { // the callback.
         console.log('beforecallback')
         console.log(r,ringtone)
@@ -111,36 +109,10 @@ const App: React.FC = () => {
         setCollectionsIgnored(ci)
         setWallets(w)
         setRingtone(r)
-        // setRing(() => {
-        //     //alert
-        //     console.log('inring')
-        //     console.log(ringtone)
-        //     const audio = new Audio(ringtone);
-        //     audio.play().then((r)=>{
-        //         console.log('made it ! ',r)
-        //     }).catch((f)=>{
-        //         console.log("fail ! ",f)
-        //     });
-        // })
 
         console.log('aftercallback')
         console.log(r, ringtone)
     };
-
-
-
-    const ring = () => {
-        //alert
-        console.log('inring')
-        console.log(ringtone)
-        const audio = new Audio(ringtone);
-        audio.play().then((r)=>{
-            console.log('made it ! ',r)
-        }).catch((f)=>{
-            console.log("fail ! ",f)
-        });
-    }
-
 
     const toggleSettings = () => {
         setSettings(!settings)
@@ -174,7 +146,7 @@ const App: React.FC = () => {
                 <About />
             </SectionAbout>
             <br/>
-            <h1>{length} collections watched ! .{ringtone}.{ring}.</h1>
+            <h1>{length} collections watched !</h1>
             <br/><br/>
             <Events>
                 <EventPrinter cols={collections} colW={collectionsWatched} colI={collectionsIgnored} wallets={wallets} sales={sales} ringtone={ringtone} />
