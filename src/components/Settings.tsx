@@ -85,15 +85,8 @@ function useForceUpdate(){
 const Settings: React.FC<Props> = (props) => {
 
     const [coladd, setColadd] = useState("")
-    // const [ringSelected, setRingSelected] = useState("")
 
     const forceUpdate = useForceUpdate();
-
-    // const options = [
-    //     { value: '/sound/juntos.mp3', label: 'Juntos' },
-    //     { value: '/sound/girl-hey.mp3', label: 'Hey !' },
-    //     { value: '/sound/hmm-girl-tone.mp3', label: 'Hmm...' },
-    // ];
 
     function colName(address: string, i:number) {
         let colsfil = props.cols.filter(
@@ -114,14 +107,8 @@ const Settings: React.FC<Props> = (props) => {
     const changeRingTone = (event: { target: { value: string; }; }) => {
         console.log(event.target.value)
         console.log(coladd)
-        // console.log(ringSelected)
-        // props.setr(event.target.value)
-        // setRingSelected(event.target.value);
         props.callbackF(props.colW,props.colI,props.wallets,event.target.value)
     }
-    // useEffect(()=>{
-    //     props.callbackF(colW,colI,wallets,ringSelected)
-    // },[ringSelected])
 
 
     const addColWatched = () => {

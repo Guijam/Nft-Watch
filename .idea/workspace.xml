@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8737a112-d9d8-497b-bee6-788f447e350f" name="Changes" comment="kinda Working alerts">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/sound/achievement-message-tone.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/sound/fingerlicking-message-tone.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/sound/girl-hey-ringtone.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/sound/hmm-girl-tone.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/sound/juntos.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/sound/oh-man.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/sound/pristine-609.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/sound/succeeded-message-tone.mp3" afterDir="false" />
+    <list default="true" id="8737a112-d9d8-497b-bee6-788f447e350f" name="Changes" comment="1 step closer">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/EventPrinter.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/EventPrinter.tsx" afterDir="false" />
@@ -23,6 +14,10 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
+  </component>
+  <component name="GithubDefaultAccount">
+    <option name="defaultAccountId" value="5bbf5c1a-9bdf-436d-a2a3-34b23c15d461" />
   </component>
   <component name="ProjectId" id="24Wh6qUyX5S5xDcugapqblpdsjq" />
   <component name="ProjectViewState">
@@ -71,8 +66,16 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1643752077672</updated>
-      <workItem from="1643752078967" duration="228000" />
+      <workItem from="1643752078967" duration="5223000" />
     </task>
+    <task id="LOCAL-00001" summary="kinda Working alerts">
+      <created>1643752318146</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1643752318147</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -91,6 +94,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="kinda Working alerts" />
-    <option name="LAST_COMMIT_MESSAGE" value="kinda Working alerts" />
+    <MESSAGE value="1 step closer" />
+    <option name="LAST_COMMIT_MESSAGE" value="1 step closer" />
   </component>
 </project>
