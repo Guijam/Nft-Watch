@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect} from "react";
 import {BigNumber, ethers} from "ethers"
 import {
     BundlePriceUpdate,
@@ -198,7 +198,6 @@ type Props = {
     colI: string[],
     wallets: string[],
     ringtone: string,
-    // ring:()=>void
 }
 
 const EventPrinter:React.FC<Props> = (props) => {
@@ -207,8 +206,6 @@ const EventPrinter:React.FC<Props> = (props) => {
     const [mkpId, setMkpId] = React.useState(BigNumber.from(0))
     const [result, loading] = useAsyncHook(mkpId)
 
-
-    const [rt, setRt] = useState(props.ringtone)
     const [listingFeed, setListingFeed] = React.useState<Array<NewListingExt>>([])
     const [soldFeed, setSoldFeed] = React.useState<Array<SoldExt>>([])
     const [unsoldFeed, setUnsoldFeed] = React.useState<Array<UnsoldExt>>([])
@@ -216,7 +213,7 @@ const EventPrinter:React.FC<Props> = (props) => {
     const [durationExtendedFeed, setDurationExtendedFeed] = React.useState<Array<DurationExtendedExt>>([])
     const [bidFeed, setBidFeed] = React.useState<Array<NewBidExt>>([])
     const [offerFeed, setOfferFeed] = React.useState<Array<NewOfferExt>>([])
-
+    const [alert, setAlert] = React.useState<boolean>(false)
 
     // For the chart
     const [chartVolume, setChartVolume] = React.useState<Array<any>>([])
@@ -255,61 +252,59 @@ const EventPrinter:React.FC<Props> = (props) => {
 
 
     //on affiche
-    // const isValid = (address:string)=>{
-    //     return (props.colW.indexOf(address)!=-1 && props.colI.indexOf(address)==1)
-    // }
+    const isValid = (address:string)=>{
+        return (props.colW.indexOf(address)!=-1 && props.colI.indexOf(address)==1)
+    }
 
     // on sonne
-    // const isAlertValid = (address:string)=>{
-    //     boopButton();
-    // }
+    const isAlertValid = (address:string)=>{
+        console.log("alert")
+        console.log(props.colW, address.toLowerCase(),address.toUpperCase())
+        console.log(props.colW.indexOf(address.toLowerCase())!= -1)
+        // return true
+        return props.colW.indexOf(address.toLowerCase()) != -1
+    }
+
+    const ring = (ringtone:string) => {
+        //alert
+        console.log('inring', ringtone)
+        const audio = new Audio(ringtone);
+        audio.play().then((r)=>{
+            console.log('made it ! ',r)
+        }).catch((f)=>{
+            console.log("fail ! ",f)
+        });
+    }
+
+    useEffect(()=>{
+        ring(props.ringtone)
+        setAlert(false)
+
+    },[alert])
 
     // @ts-ignore
     useEffect(() => {
-
-
-        const ring = (ringtone:string) => {
-            //alert
-            console.log('inring')
-            console.log(props.ringtone)
-            console.log(ringtone)
-            const audio = new Audio(ringtone);
-            audio.play().then((r)=>{
-                console.log('made it ! ',r)
-            }).catch((f)=>{
-                console.log("fail ! ",f)
-            });
-        }
-        ring(props.ringtone)
-        console.log('effect')
-        console.log(props.ringtone)
-        console.log(rt)
-        setRt(props.ringtone)
-
         if (!init) {
             console.log("Start listening")
 
-
-
             marketplace.onNewListing((item) => {
                 console.log('New listing!\n', item)
-                ring(props.ringtone)
 
                 const itemExt: NewListingExt = Object.assign({}, item, {time: timeConverter(Date.now() / 1000)})
                 listingFeed.unshift(itemExt)
                 if (listingFeed.length > maxFeedCount) listingFeed.pop()
                 setListingFeed([...listingFeed])
+                setAlert(isAlertValid(item.collection.toLowerCase()))
             })
 
             marketplace.onSold((item) => {
                 console.log('Sold!\n', item)
-                ring(rt)
-                ring(props.ringtone)
 
                 const itemExt: SoldExt = Object.assign({}, item, {time: timeConverter(Date.now() / 1000)})
                 soldFeed.unshift(itemExt)
                 if (soldFeed.length > maxFeedCount) soldFeed.pop()
                 setSoldFeed([...soldFeed])
+                setAlert(isAlertValid(item.collection.toLowerCase()))
 
                 chartVolume.push({
                     time: itemExt.time,
@@ -345,13 +340,12 @@ const EventPrinter:React.FC<Props> = (props) => {
                 console.log('Price updated\n', item)
                 console.log(item.marketplaceId)
                 setMkpId(item.marketplaceId)
-                ring(rt)
-                ring(props.ringtone)
 
                 const itemExt: BundlePriceUpdateExt = Object.assign({}, item, {time: timeConverter(Date.now() / 1000)})
                 priceUpdateFeed.unshift(itemExt)
                 if (priceUpdateFeed.length > maxFeedCount) priceUpdateFeed.pop()
                 setPriceUpdateFeed([...priceUpdateFeed])
+                setAlert(isAlertValid(result.toLowerCase()))
             })
 
             marketplace.onNewBid((bid) => {
@@ -382,11 +376,10 @@ const EventPrinter:React.FC<Props> = (props) => {
             })
         }
         setInit(true)
-    }, [init, listingFeed, soldFeed, unsoldFeed, priceUpdateFeed, durationExtendedFeed, bidFeed, offerFeed, chartVolume, rt, props.ringtone])
+    }, [init, listingFeed, soldFeed, unsoldFeed, priceUpdateFeed, durationExtendedFeed, bidFeed, offerFeed, chartVolume, props.ringtone])
 
     return (
         <Body>
-            {setRt}
             <ListContainer>
                 {/** LISTINGS */}
                 <FeedContainer>
