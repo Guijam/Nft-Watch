@@ -3,48 +3,47 @@ import styled from "styled-components";
 import {Collection} from "../api/nftWatcherTypes";
 
 const Wrapper = styled.div`
-      position: absolute;
-      left: 4em;
-      right: 4em;
-      flex-direction: column;
-      margin-top: 16px;
-      //width: 80%;
-      background-color: rgba(51, 41, 46, 0.89);
-      border-radius: 25px;
-      padding-bottom: 24px;
-    `
+  position: absolute;
+  left: 4em;
+  right: 4em;
+  flex-direction: column;
+  margin-top: 16px;
+  background-color: rgba(51, 41, 46, 0.89);
+  border-radius: 25px;
+  padding-bottom: 24px;
+`
 
 const Section = styled.div`
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      grid-gap: 60px;
-      width: 100%;
-      padding:1em;
-    
-    `
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-gap: 60px;
+  width: 100%;
+  padding:1em;
+
+`
 
 const ColsWatcher = styled.div`
-      display: block;
-      background-color: rgba(0, 0, 0, 0.89);
-      text-align: left;
-      padding: 30px;
-      border-radius: 25px;
-    `
+  display: block;
+  background-color: rgba(0, 0, 0, 0.89);
+  text-align: left;
+  padding: 30px;
+  border-radius: 25px;
+`
 
 const ColsWatched = styled.ul`
-      display: block;
-      background-color: rgba(0, 0, 0, 0.89);
-      text-align: left;
-      padding: 30px;
-      border-radius: 25px;
-    `
+  display: block;
+  background-color: rgba(0, 0, 0, 0.89);
+  text-align: left;
+  padding: 30px;
+  border-radius: 25px;
+`
 const ColWatched = styled.li`
-      display: block;
-      background-color: rgb(59, 59, 53);
-      text-align: left;
-      padding: 10px;
-      border-radius: 15px;
-    `
+  display: block;
+  background-color: rgb(59, 59, 53);
+  text-align: left;
+  padding: 10px;
+  border-radius: 15px;
+`
 
 const DelButton = styled.button`
   float: right;
@@ -54,9 +53,16 @@ const ColInput = styled.input`
   margin-right : 1em;
 `
 
-const Tiltle = styled.h2` 
-    margin-top: unset;
+const Tiltle = styled.h2`
+  margin-top: unset;
   margin-bottom: 1em;
+`
+
+const LittleSpan = styled.span`
+    display: block;
+  font-style: italic;
+    font-size: small;
+    text-align: center;
 `
 
 interface Props {
@@ -64,7 +70,9 @@ interface Props {
     colW: string[],
     colI: string[],
     wallets: string[],
-    callbackF:(     cw: string[],     ci: string[],     w: string[])=>void
+    ringtone:string,
+    callbackF:(     cw: string[],     ci: string[],     w: string[], r:string)=>void,
+    setr:(s:string)=>void
 }
 
 //create your forceUpdate hook
@@ -74,14 +82,21 @@ function useForceUpdate(){
     return () => setValue(value => value + 1); // update the state to force render
 }
 
-const Settings: React.FC<Props> = ({cols,colW, colI, wallets, callbackF}) => {
+const Settings: React.FC<Props> = (props) => {
 
     const [coladd, setColadd] = useState("")
+    // const [ringSelected, setRingSelected] = useState("")
 
     const forceUpdate = useForceUpdate();
 
+    // const options = [
+    //     { value: '/sound/juntos.mp3', label: 'Juntos' },
+    //     { value: '/sound/girl-hey.mp3', label: 'Hey !' },
+    //     { value: '/sound/hmm-girl-tone.mp3', label: 'Hmm...' },
+    // ];
+
     function colName(address: string, i:number) {
-        let colsfil = cols.filter(
+        let colsfil = props.cols.filter(
             function (data: Collection) {
                 return data.id.toLowerCase() === address.toLowerCase() ? data : null
             }
@@ -93,19 +108,30 @@ const Settings: React.FC<Props> = ({cols,colW, colI, wallets, callbackF}) => {
     const changeColadd = (event: { target: { value: string; }; }) => {
         console.log(event.target.value)
         console.log(coladd)
-        console.log(colW)
+        console.log(props.colW)
         setColadd(event.target.value);
-
     }
+    const changeRingTone = (event: { target: { value: string; }; }) => {
+        console.log(event.target.value)
+        console.log(coladd)
+        // console.log(ringSelected)
+        // props.setr(event.target.value)
+        // setRingSelected(event.target.value);
+        props.callbackF(props.colW,props.colI,props.wallets,event.target.value)
+    }
+    // useEffect(()=>{
+    //     props.callbackF(colW,colI,wallets,ringSelected)
+    // },[ringSelected])
+
 
     const addColWatched = () => {
-        colW.push(coladd)
+        props.colW.push(coladd)
         setColadd("")
     }
 
 
     const delColWatched = (i:number) => {
-        colW.splice(i,1)
+        props.colW.splice(i,1)
         forceUpdate()
     }
 
@@ -113,18 +139,31 @@ const Settings: React.FC<Props> = ({cols,colW, colI, wallets, callbackF}) => {
         <Wrapper>
             <Section id="filter">
                 <ColsWatcher id="watched">
-                <Tiltle>Watched</Tiltle>
+                    <Tiltle>Watched</Tiltle>
                     Add collection :
                     <ColInput id="coladd" type="text" value={coladd} onChange={changeColadd}/>
                     <button className="add" type="button" onClick={addColWatched}> Add </button>
+                    <br/><LittleSpan>(Input the exact address)</LittleSpan>
                     <ColsWatched id="watched-cols">
-                        {colW.map((item: string, i:number)=>(
+                        {props.colW.map((item: string, i:number)=>(
                             <ColWatched className="col" key={i}>
                                 <span>{colName(item, i)}</span>
                                 <DelButton className="del" type="button" onClick={()=>delColWatched(i)}>[X]</DelButton>
                             </ColWatched>
                         ))}
                     </ColsWatched>
+                    {/*<select*/}
+                    {/*    value={ringtone}*/}
+                    {/*    onChange={changeRingTone}*/}
+                    {/*>*/}
+                    {/*    <option value="./sound/juntos.mp3">Juntos</option>*/}
+                    {/*</select>*/}
+                    <select onChange={changeRingTone}>
+                        <option value=""> - </option>
+                        <option value="./sound/juntos.mp3">Juntos</option>
+                        <option value="./sound/girl-hey-ringtone.mp3">Hey !</option>
+                        <option value="./sound/oh-man.mp3">Oh man !</option>
+                    </select>
                 </ColsWatcher>
                 <ColsWatched id="watched-address">
                     <Tiltle>Ignored</Tiltle>
