@@ -1,19 +1,20 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import {BigNumber, ethers} from "ethers"
 import {
-  BundlePriceUpdate,
-  DurationExtended,
-  MarketplaceV2,
-  NewBid,
-  NewListing,
-  NewOffer,
-  Sold,
-  Unsold
+    BundlePriceUpdate,
+    DurationExtended,
+    MarketplaceV2,
+    NewBid,
+    NewListing,
+    NewOffer,
+    Sold,
+    Unsold
 } from '@paintswap/marketplace-interactions'
 import styled from 'styled-components'
 import {getBalanceNumber, getBalanceString, short, timeConverter,} from '../utils/helpers'
 import ChartCard from "./ChartCard";
-import {Collection} from "../api/nftWatcherTypes";
+import {Collection} from "../api/nftWatcherTypes"
+// import mp3 from "../assets/oh-man.mp3"
 
 const provider = new ethers.providers.JsonRpcProvider(
     "https://rpc.ftm.tools/"
@@ -166,35 +167,48 @@ const Divider = styled.div`
   opacity: 0.3;
 `
 function useAsyncHook(mkp:BigNumber) {
-  const [result, setResult] = React.useState("");
-  const [loading, setLoading] = React.useState("false");
+    const [result, setResult] = React.useState("");
+    const [loading, setLoading] = React.useState("false");
 
-  React.useEffect(() => {
-    async function fetchMkpDetails() {
-      try {
-        setLoading("true");
-        const response = (await marketplace.getSaleDetails(mkp));
-        const json = await response;
-        console.log(json);
-        setResult(json.nfts[0]);
-      } catch (error) {
-        setLoading("null");
-      }
-    }
+    React.useEffect(() => {
+        async function fetchMkpDetails() {
+            try {
+                setLoading("true");
+                const response = (await marketplace.getSaleDetails(mkp));
+                const json = await response;
+                console.log(json);
+                setResult(json.nfts[0]);
+            } catch (error) {
+                setLoading("null");
+            }
+        }
 
-    if (!mkp.eq(BigNumber.from(0))) {
-      fetchMkpDetails();
-    }
-  }, [mkp]);
+        if (!mkp.eq(BigNumber.from(0))) {
+            fetchMkpDetails();
+        }
+    }, [mkp]);
 
-  return [result, loading];
+    return [result, loading];
 }
 
-const EventPrinter = (props: any) => {
+type Props = {
+    sales:{},
+    cols: Collection[],
+    colW: string[],
+    colI: string[],
+    wallets: string[],
+    ringtone: string,
+    // ring:()=>void
+}
+
+const EventPrinter:React.FC<Props> = (props) => {
+// const EventPrinter:React.FC<Props> = (props) => {
     const [init, setInit] = React.useState(false)
     const [mkpId, setMkpId] = React.useState(BigNumber.from(0))
     const [result, loading] = useAsyncHook(mkpId)
 
+
+    const [rt, setRt] = useState(props.ringtone)
     const [listingFeed, setListingFeed] = React.useState<Array<NewListingExt>>([])
     const [soldFeed, setSoldFeed] = React.useState<Array<SoldExt>>([])
     const [unsoldFeed, setUnsoldFeed] = React.useState<Array<UnsoldExt>>([])
@@ -202,6 +216,7 @@ const EventPrinter = (props: any) => {
     const [durationExtendedFeed, setDurationExtendedFeed] = React.useState<Array<DurationExtendedExt>>([])
     const [bidFeed, setBidFeed] = React.useState<Array<NewBidExt>>([])
     const [offerFeed, setOfferFeed] = React.useState<Array<NewOfferExt>>([])
+
 
     // For the chart
     const [chartVolume, setChartVolume] = React.useState<Array<any>>([])
@@ -214,6 +229,8 @@ const EventPrinter = (props: any) => {
         )
         return colsfil && colsfil.length > 0 ? colsfil[0].name : "Unknown collection"
     }
+
+
 
     // function mKPColName(mkp: BigNumber) {
     //   let salesFiltered = props.sales.filter(
@@ -236,14 +253,47 @@ const EventPrinter = (props: any) => {
     // },[])
 
 
+
+    //on affiche
+    // const isValid = (address:string)=>{
+    //     return (props.colW.indexOf(address)!=-1 && props.colI.indexOf(address)==1)
+    // }
+
+    // on sonne
+    // const isAlertValid = (address:string)=>{
+    //     boopButton();
+    // }
+
     // @ts-ignore
     useEffect(() => {
+
+
+        const ring = (ringtone:string) => {
+            //alert
+            console.log('inring')
+            console.log(props.ringtone)
+            console.log(ringtone)
+            const audio = new Audio(ringtone);
+            audio.play().then((r)=>{
+                console.log('made it ! ',r)
+            }).catch((f)=>{
+                console.log("fail ! ",f)
+            });
+        }
+        ring(props.ringtone)
+        console.log('effect')
+        console.log(props.ringtone)
+        console.log(rt)
+        setRt(props.ringtone)
+
         if (!init) {
             console.log("Start listening")
 
 
+
             marketplace.onNewListing((item) => {
                 console.log('New listing!\n', item)
+                ring(props.ringtone)
 
                 const itemExt: NewListingExt = Object.assign({}, item, {time: timeConverter(Date.now() / 1000)})
                 listingFeed.unshift(itemExt)
@@ -253,6 +303,8 @@ const EventPrinter = (props: any) => {
 
             marketplace.onSold((item) => {
                 console.log('Sold!\n', item)
+                ring(rt)
+                ring(props.ringtone)
 
                 const itemExt: SoldExt = Object.assign({}, item, {time: timeConverter(Date.now() / 1000)})
                 soldFeed.unshift(itemExt)
@@ -293,6 +345,8 @@ const EventPrinter = (props: any) => {
                 console.log('Price updated\n', item)
                 console.log(item.marketplaceId)
                 setMkpId(item.marketplaceId)
+                ring(rt)
+                ring(props.ringtone)
 
                 const itemExt: BundlePriceUpdateExt = Object.assign({}, item, {time: timeConverter(Date.now() / 1000)})
                 priceUpdateFeed.unshift(itemExt)
@@ -328,10 +382,11 @@ const EventPrinter = (props: any) => {
             })
         }
         setInit(true)
-    }, [init, listingFeed, soldFeed, unsoldFeed, priceUpdateFeed, durationExtendedFeed, bidFeed, offerFeed, chartVolume])
+    }, [init, listingFeed, soldFeed, unsoldFeed, priceUpdateFeed, durationExtendedFeed, bidFeed, offerFeed, chartVolume, rt, props.ringtone])
 
     return (
         <Body>
+            {setRt}
             <ListContainer>
                 {/** LISTINGS */}
                 <FeedContainer>
@@ -495,9 +550,9 @@ const EventPrinter = (props: any) => {
                                     ) : loading === "null" ? (
                                         <span>Collection not found :-(</span>
                                     ) : (
-                                          <span><a href={`${mainUrl}collections/${result.toLowerCase()}`}
-                                                   target="_blank"
-                                                   rel="noreferrer">{colName(result)}</a></span>
+                                        <span><a href={`${mainUrl}collections/${result.toLowerCase()}`}
+                                                 target="_blank"
+                                                 rel="noreferrer">{colName(result)}</a></span>
                                     )}
                                     </SpanMain>
                                     {/*<SpanMain>{setMkpId(item.marketplaceId)}</SpanMain>*/}
