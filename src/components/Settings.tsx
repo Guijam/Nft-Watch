@@ -130,7 +130,7 @@ const Settings: React.FC<Props> = (props) => {
                     Add collection :
                     <ColInput id="coladd" type="text" value={coladd} onChange={changeColadd}/>
                     <button className="add" type="button" onClick={addColWatched}> Add </button>
-                    <br/><LittleSpan>(Input the exact address)</LittleSpan>
+                    <br/><LittleSpan>(Input the exact address. Caution : reset on reload !)</LittleSpan>
                     <ColsWatched id="watched-cols">
                         {props.colW.map((item: string, i:number)=>(
                             <ColWatched className="col" key={i}>
