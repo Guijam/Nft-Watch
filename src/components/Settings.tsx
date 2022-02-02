@@ -150,6 +150,11 @@ const Settings: React.FC<Props> = (props) => {
                         <option value="./sound/juntos.mp3">Juntos</option>
                         <option value="./sound/girl-hey-ringtone.mp3">Hey !</option>
                         <option value="./sound/oh-man.mp3">Oh man !</option>
+                        <option value="./sound/achievement-message-tone.mp3">Achievement !</option>
+                        <option value="./sound/fingerlicking-message-tone.mp3">Fingerlick</option>
+                        <option value="./sound/hmm-girl-tone.mp3">Hmm...</option>
+                        <option value="./sound/pristine-609.mp3">Pristine</option>
+                        <option value="./sound/succeeded-message-tone.mp3">Success !</option>
                     </select>
                 </ColsWatcher>
                 <ColsWatched id="watched-address">

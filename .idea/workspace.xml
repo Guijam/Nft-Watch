@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8737a112-d9d8-497b-bee6-788f447e350f" name="Changes" comment="fixed update price">
+    <list default="true" id="8737a112-d9d8-497b-bee6-788f447e350f" name="Changes" comment="fixed update coll link + 3*2">
       <change afterPath="$PROJECT_DIR$/../The-Old-Fanto-Lab/src/pages/puzzle.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Nft-Watch.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Nft-Watch.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/EventPrinter.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/EventPrinter.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Settings.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Settings.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../The-Old-Fanto-Lab/.idea/The-Old-Fanto-Lab.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../The-Old-Fanto-Lab/.idea/The-Old-Fanto-Lab.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../The-Old-Fanto-Lab/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../The-Old-Fanto-Lab/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../The-Old-Fanto-Lab/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/../The-Old-Fanto-Lab/config.js" afterDir="false" />
@@ -147,7 +143,14 @@
       <option name="project" value="LOCAL" />
       <updated>1643784120671</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="fixed update coll link + 3*2">
+      <created>1643796578439</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1643796578439</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -169,6 +172,7 @@
     <MESSAGE value="kinda Working alerts" />
     <MESSAGE value="1 step closer" />
     <MESSAGE value="fixed update price" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed update price" />
+    <MESSAGE value="fixed update coll link + 3*2" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed update coll link + 3*2" />
   </component>
 </project>
