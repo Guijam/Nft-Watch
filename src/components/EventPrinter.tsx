@@ -1,5 +1,5 @@
 import React, {useEffect} from "react";
-import {BigNumber, ethers} from "ethers"
+import {ethers} from "ethers"
 import {
     BundlePriceUpdate,
     DurationExtended,
@@ -166,30 +166,30 @@ const Divider = styled.div`
   background-color: #7d8fd1;
   opacity: 0.3;
 `
-function useAsyncHook(mkp:BigNumber) {
-    const [result, setResult] = React.useState("");
-    const [loading, setLoading] = React.useState("false");
-
-    React.useEffect(() => {
-        async function fetchMkpDetails() {
-            try {
-                setLoading("true");
-                const response = (await marketplace.getSaleDetails(mkp));
-                const json = await response;
-                console.log(json);
-                setResult(json.nfts[0]);
-            } catch (error) {
-                setLoading("null");
-            }
-        }
-
-        if (!mkp.eq(BigNumber.from(0))) {
-            fetchMkpDetails();
-        }
-    }, [mkp]);
-
-    return [result, loading];
-}
+// function useAsyncHook(mkp:BigNumber) {
+//     const [result, setResult] = React.useState("");
+//     const [loading, setLoading] = React.useState("false");
+//
+//     React.useEffect(() => {
+//         async function fetchMkpDetails() {
+//             try {
+//                 setLoading("true");
+//                 const json = (await marketplace.getSaleDetails(mkp));
+//                 // const json = await response;
+//                 console.log(json);
+//                 setResult(json.nfts[0]);
+//             } catch (error) {
+//                 setLoading("null");
+//             }
+//         }
+//
+//         if (!mkp.eq(BigNumber.from(0))) {
+//             fetchMkpDetails();
+//         }
+//     }, [mkp]);
+//
+//     return [result, loading];
+// }
 
 type Props = {
     sales:{},
@@ -203,8 +203,9 @@ type Props = {
 const EventPrinter:React.FC<Props> = (props) => {
 // const EventPrinter:React.FC<Props> = (props) => {
     const [init, setInit] = React.useState(false)
-    const [mkpId, setMkpId] = React.useState(BigNumber.from(0))
-    const [result, loading] = useAsyncHook(mkpId)
+    // const [mkpId, setMkpId] = React.useState(BigNumber.from(0))
+    // const [result, loading] = useAsyncHook(mkpId)
+    // const [mkpColName,setMkpColName] = useState('')
 
     const [listingFeed, setListingFeed] = React.useState<Array<NewListingExt>>([])
     const [soldFeed, setSoldFeed] = React.useState<Array<SoldExt>>([])
@@ -228,33 +229,10 @@ const EventPrinter:React.FC<Props> = (props) => {
     }
 
 
-
-    // function mKPColName(mkp: BigNumber) {
-    //   let salesFiltered = props.sales.filter(
-    //       function (data: Sale) {
-    //         console.log(data.id)
-    //         console.log(mkp.toString())
-    //         return data.id === mkp.toString() ? data : null
-    //       }
-    //   )
-    //   console.log("sales filtered :",salesFiltered)
-    //   return salesFiltered && salesFiltered.address ? colName(salesFiltered.address) : "Not found"
-    // }
-    // useEffect(()=>{
-    //    async function mkpColName(mkp: BigNumber):Promise<string> {
-    //     let saleDetail = (await marketplace.getSaleDetails(mkp))
-    //     return saleDetail.nfts[0];
-    //   }
-    //   mkpColName(new BigNumber(1,"1"));
-    //
-    // },[])
-
-
-
     //on affiche
-    const isValid = (address:string)=>{
-        return (props.colW.indexOf(address)!=-1 && props.colI.indexOf(address)==1)
-    }
+    // const isValid = (address:string)=>{
+    //     return (props.colW.indexOf(address)!=-1 && props.colI.indexOf(address)==1)
+    // }
 
     // on sonne
     const isAlertValid = (address:string)=>{
@@ -264,6 +242,7 @@ const EventPrinter:React.FC<Props> = (props) => {
         // return true
         return props.colW.indexOf(address.toLowerCase()) != -1
     }
+
 
     const ring = (ringtone:string) => {
         //alert
@@ -279,7 +258,6 @@ const EventPrinter:React.FC<Props> = (props) => {
     useEffect(()=>{
         ring(props.ringtone)
         setAlert(false)
-
     },[alert])
 
     // @ts-ignore
@@ -339,13 +317,14 @@ const EventPrinter:React.FC<Props> = (props) => {
             marketplace.onPriceUpdate((item) => {
                 console.log('Price updated\n', item)
                 console.log(item.marketplaceId)
-                setMkpId(item.marketplaceId)
+                // setMkpId(item.marketplaceId)
 
                 const itemExt: BundlePriceUpdateExt = Object.assign({}, item, {time: timeConverter(Date.now() / 1000)})
                 priceUpdateFeed.unshift(itemExt)
                 if (priceUpdateFeed.length > maxFeedCount) priceUpdateFeed.pop()
                 setPriceUpdateFeed([...priceUpdateFeed])
-                setAlert(isAlertValid(result.toLowerCase()))
+                console.log(item.event.args && item.event.args[2])
+                setAlert(isAlertValid(item.event.args && item.event.args[2][0]))
             })
 
             marketplace.onNewBid((bid) => {
@@ -538,16 +517,18 @@ const EventPrinter:React.FC<Props> = (props) => {
                                 </SectionRow>
                                 <SectionRow>
                                     <SpanMain>Collection</SpanMain>
-                                    <SpanMain>{loading === "false" ? (
-                                        <span>Searching for Collection...</span>
-                                    ) : loading === "null" ? (
-                                        <span>Collection not found :-(</span>
-                                    ) : (
-                                        <span><a href={`${mainUrl}collections/${result.toLowerCase()}`}
-                                                 target="_blank"
-                                                 rel="noreferrer">{colName(result)}</a></span>
-                                    )}
-                                    </SpanMain>
+                                    <SpanMain>{colName(item.event.args && item.event.args[2][0])}</SpanMain>
+
+                                    {/*<SpanMain>{loading === "false" ? (*/}
+                                    {/*    <span>Searching for Collection...</span>*/}
+                                    {/*) : loading === "null" ? (*/}
+                                    {/*    <span>Collection not found :-(</span>*/}
+                                    {/*) : (*/}
+                                    {/*    <span><a href={`${mainUrl}collections/${result.toLowerCase()}`}*/}
+                                    {/*             target="_blank"*/}
+                                    {/*             rel="noreferrer">{colName(result)}</a></span>*/}
+                                    {/*)}*/}
+                                    {/*</SpanMain>*/}
                                     {/*<SpanMain>{setMkpId(item.marketplaceId)}</SpanMain>*/}
                                 </SectionRow>
                                 <Divider/>

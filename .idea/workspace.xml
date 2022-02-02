@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8737a112-d9d8-497b-bee6-788f447e350f" name="Changes" comment="" />
+    <list default="true" id="8737a112-d9d8-497b-bee6-788f447e350f" name="Changes" comment="fixed update price">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/EventPrinter.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/EventPrinter.tsx" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -11,10 +14,22 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="UPDATE_TYPE" value="REBASE" />
   </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
   <component name="GithubDefaultAccount">
     <option name="defaultAccountId" value="5bbf5c1a-9bdf-436d-a2a3-34b23c15d461" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$USER_HOME$/Nft-Watch/.gitignore" root0="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="ProjectId" id="24Wh6qUyX5S5xDcugapqblpdsjq" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -98,6 +113,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="kinda Working alerts" />
     <MESSAGE value="1 step closer" />
-    <option name="LAST_COMMIT_MESSAGE" value="1 step closer" />
+    <MESSAGE value="fixed update price" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed update price" />
   </component>
 </project>
