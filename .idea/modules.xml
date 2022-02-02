@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/Nft-Watch.iml" filepath="$PROJECT_DIR$/.idea/Nft-Watch.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../The-Old-Fanto-Lab/.idea/The-Old-Fanto-Lab.iml" filepath="$PROJECT_DIR$/../The-Old-Fanto-Lab/.idea/The-Old-Fanto-Lab.iml" />
     </modules>
   </component>
 </project>

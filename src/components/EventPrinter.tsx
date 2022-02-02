@@ -92,19 +92,19 @@ const ListContainer = styled.div`
   }
 
   ${mediaQueries.md} {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(1, minmax(0, 1fr));
   }
 
   ${mediaQueries.lg} {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   ${mediaQueries.xl} {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   ${mediaQueries.xxl} {
-    grid-template-columns: repeat(5, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 `
 
@@ -464,42 +464,6 @@ const EventPrinter:React.FC<Props> = (props) => {
                     </Feed>
                 </FeedContainer>
 
-                {/** UNSOLD */}
-                <FeedContainer>
-                    <p>UNSOLD</p>
-                    <Feed>
-                        {unsoldFeed && unsoldFeed.map((item: UnsoldExt, index: number) => (
-                            <FeedSection key={index}>
-                                <SectionRow>
-                                    <SpanHeader><a href={`${mainUrl}${item.marketplaceId.toString()}`} target="_blank"
-                                                   rel="noreferrer">{item.marketplaceId.toString()}</a></SpanHeader>
-                                    <SpanMain>{item.time}</SpanMain>
-                                </SectionRow>
-                                <SectionRow>
-                                    <SpanMain>Reason</SpanMain>
-                                    <SpanMain>{item.cancelled ? 'Cancelled' : 'Expired'}</SpanMain>
-                                </SectionRow>
-                                <SectionRow>
-                                    <SpanMain>Collection</SpanMain>
-                                    <SpanMain><a href={`${mainUrl}collections/${item.collection.toLowerCase()}`}
-                                                 target="_blank"
-                                                 rel="noreferrer">{colName(item.collection.toLowerCase())}</a></SpanMain>
-                                </SectionRow>
-                                <SectionRow>
-                                    <SpanMain>Token ID</SpanMain>
-                                    <SpanMain><a
-                                        href={`${mainUrl}assets/${item.collection.toLowerCase()}/${item.tokenID.toString()}`}
-                                        target="_blank" rel="noreferrer">{item.tokenID.toString()}</a></SpanMain>
-                                </SectionRow>
-                                <Divider/>
-                            </FeedSection>
-                        ))}
-                        {!unsoldFeed.length && (
-                            <SpanHeader>Waiting for events...</SpanHeader>
-                        )}
-                    </Feed>
-                </FeedContainer>
-
                 {/** PRICE UPDATE */}
                 <FeedContainer>
                     <p>PRICE UPDATE</p>
@@ -517,7 +481,10 @@ const EventPrinter:React.FC<Props> = (props) => {
                                 </SectionRow>
                                 <SectionRow>
                                     <SpanMain>Collection</SpanMain>
-                                    <SpanMain>{colName(item.event.args && item.event.args[2][0])}</SpanMain>
+                                    <SpanMain>
+                                        <a href={`${mainUrl}collections/${item.event.args && item.event.args[2][0].toLowerCase()}`}
+                                           target="_blank"
+                                           rel="noreferrer">{colName(item.event.args && item.event.args[2][0])}</a></SpanMain>
 
                                     {/*<SpanMain>{loading === "false" ? (*/}
                                     {/*    <span>Searching for Collection...</span>*/}
@@ -606,11 +573,12 @@ const EventPrinter:React.FC<Props> = (props) => {
                     </Feed>
                 </FeedContainer>
 
-                {/** AUCTIONS EXTENDED*/}
+
+                {/** UNSOLD */}
                 <FeedContainer>
-                    <p>AUCTION CHANGE</p>
+                    <p>UNSOLD</p>
                     <Feed>
-                        {durationExtendedFeed && durationExtendedFeed.map((item: DurationExtendedExt, index: number) => (
+                        {unsoldFeed && unsoldFeed.map((item: UnsoldExt, index: number) => (
                             <FeedSection key={index}>
                                 <SectionRow>
                                     <SpanHeader><a href={`${mainUrl}${item.marketplaceId.toString()}`} target="_blank"
@@ -618,17 +586,53 @@ const EventPrinter:React.FC<Props> = (props) => {
                                     <SpanMain>{item.time}</SpanMain>
                                 </SectionRow>
                                 <SectionRow>
-                                    <SpanMain>End Time</SpanMain>
-                                    <SpanMain>{timeConverter(item.endTime.toNumber())}</SpanMain>
+                                    <SpanMain>Reason</SpanMain>
+                                    <SpanMain>{item.cancelled ? 'Cancelled' : 'Expired'}</SpanMain>
+                                </SectionRow>
+                                <SectionRow>
+                                    <SpanMain>Collection</SpanMain>
+                                    <SpanMain><a href={`${mainUrl}collections/${item.collection.toLowerCase()}`}
+                                                 target="_blank"
+                                                 rel="noreferrer">{colName(item.collection.toLowerCase())}</a></SpanMain>
+                                </SectionRow>
+                                <SectionRow>
+                                    <SpanMain>Token ID</SpanMain>
+                                    <SpanMain><a
+                                        href={`${mainUrl}assets/${item.collection.toLowerCase()}/${item.tokenID.toString()}`}
+                                        target="_blank" rel="noreferrer">{item.tokenID.toString()}</a></SpanMain>
                                 </SectionRow>
                                 <Divider/>
                             </FeedSection>
                         ))}
-                        {!durationExtendedFeed.length && (
+                        {!unsoldFeed.length && (
                             <SpanHeader>Waiting for events...</SpanHeader>
                         )}
                     </Feed>
                 </FeedContainer>
+
+                {/*/!** AUCTIONS EXTENDED*!/*/}
+                {/*<FeedContainer>*/}
+                {/*    <p>AUCTION CHANGE</p>*/}
+                {/*    <Feed>*/}
+                {/*        {durationExtendedFeed && durationExtendedFeed.map((item: DurationExtendedExt, index: number) => (*/}
+                {/*            <FeedSection key={index}>*/}
+                {/*                <SectionRow>*/}
+                {/*                    <SpanHeader><a href={`${mainUrl}${item.marketplaceId.toString()}`} target="_blank"*/}
+                {/*                                   rel="noreferrer">{item.marketplaceId.toString()}</a></SpanHeader>*/}
+                {/*                    <SpanMain>{item.time}</SpanMain>*/}
+                {/*                </SectionRow>*/}
+                {/*                <SectionRow>*/}
+                {/*                    <SpanMain>End Time</SpanMain>*/}
+                {/*                    <SpanMain>{timeConverter(item.endTime.toNumber())}</SpanMain>*/}
+                {/*                </SectionRow>*/}
+                {/*                <Divider/>*/}
+                {/*            </FeedSection>*/}
+                {/*        ))}*/}
+                {/*        {!durationExtendedFeed.length && (*/}
+                {/*            <SpanHeader>Waiting for events...</SpanHeader>*/}
+                {/*        )}*/}
+                {/*    </Feed>*/}
+                {/*</FeedContainer>*/}
             </ListContainer>
             <ChartArea>
                 <ChartCard volume={chartVolume}/>
