@@ -1,51 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8737a112-d9d8-497b-bee6-788f447e350f" name="Changes" comment="fixed update coll link + 3*2 v2">
-      <change afterPath="$PROJECT_DIR$/../The-Old-Fanto-Lab/src/pages/puzzle.js" afterDir="false" />
+    <list default="true" id="8737a112-d9d8-497b-bee6-788f447e350f" name="Changes" comment="Spring Fanto Lab 3 gogogo">
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Settings.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Settings.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../The-Old-Fanto-Lab/.idea/The-Old-Fanto-Lab.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../The-Old-Fanto-Lab/.idea/The-Old-Fanto-Lab.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../The-Old-Fanto-Lab/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../The-Old-Fanto-Lab/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../The-Old-Fanto-Lab/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/../The-Old-Fanto-Lab/config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../The-Old-Fanto-Lab/src/assets/images/Red.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../The-Old-Fanto-Lab/src/assets/images/bgold.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../The-Old-Fanto-Lab/src/assets/images/close.svg" beforeDir="false" afterPath="$PROJECT_DIR$/../The-Old-Fanto-Lab/src/assets/img/close.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../The-Old-Fanto-Lab/src/assets/images/pic01.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../The-Old-Fanto-Lab/src/assets/images/pic02.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../The-Old-Fanto-Lab/src/assets/images/pic03.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../The-Old-Fanto-Lab/src/assets/images/pic04.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../The-Old-Fanto-Lab/src/assets/images/pic05.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../The-Old-Fanto-Lab/src/assets/images/pic06.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../The-Old-Fanto-Lab/src/assets/images/pic07.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../The-Old-Fanto-Lab/src/assets/images/pic08 (1).jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../The-Old-Fanto-Lab/src/assets/images/pic08.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../The-Old-Fanto-Lab/src/assets/img/demo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../The-Old-Fanto-Lab/src/assets/img/screenshot.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../The-Old-Fanto-Lab/src/assets/img/website-icon.png" beforeDir="false" afterPath="$PROJECT_DIR$/../The-Old-Fanto-Lab/src/assets/img/website-icon.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../The-Old-Fanto-Lab/src/assets/sass/layout/_menu.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../The-Old-Fanto-Lab/src/assets/sass/layout/_menu.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../The-Old-Fanto-Lab/src/components/About/About.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../The-Old-Fanto-Lab/src/components/Footer/Footer.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../The-Old-Fanto-Lab/src/components/Hero/Hero.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../The-Old-Fanto-Lab/src/components/Journey.js" beforeDir="false" afterPath="$PROJECT_DIR$/../The-Old-Fanto-Lab/src/components/Journey.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../The-Old-Fanto-Lab/src/pages/Elements.js" beforeDir="false" afterPath="$PROJECT_DIR$/../The-Old-Fanto-Lab/src/pages/Elements.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../The-Old-Fanto-Lab/src/pages/Generic.js" beforeDir="false" afterPath="$PROJECT_DIR$/../The-Old-Fanto-Lab/src/pages/Generic.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../The-Old-Fanto-Lab/src/pages/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../The-Old-Fanto-Lab/src/pages/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../The-Old-Fanto-Lab/src/pages/index_old.js" beforeDir="false" afterPath="$PROJECT_DIR$/../The-Old-Fanto-Lab/src/pages/index_old.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../The-Old-Fanto-Lab/src/static/abi/abis.js" beforeDir="false" afterPath="$PROJECT_DIR$/../The-Old-Fanto-Lab/src/static/abi/abis.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
         <entry key="$PROJECT_DIR$" value="dev2" />
+        <entry key="$PROJECT_DIR$/../The-Old-Fanto-Lab" value="main" />
+        <entry key="$PROJECT_DIR$/../The-Old-Fanto-Lab-v2" value="main" />
       </map>
     </option>
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../The-Old-Fanto-Lab" />
+    <option name="ROOT_SYNC" value="DONT_SYNC" />
     <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="GitSEFilterConfiguration">
@@ -62,21 +43,27 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$USER_HOME$/Nft-Watch/.gitignore" root0="FORCE_HIGHLIGHTING" />
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedIndex" value="1" />
+  </component>
   <component name="ProjectId" id="24Wh6qUyX5S5xDcugapqblpdsjq" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
     <option name="showMembers" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../The-Old-Fanto-Lab" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../The-Old-Fanto-Lab-v2" />
     <property name="nodejs_package_manager_path" value="yarn" />
+    <property name="prettierjs.PrettierConfiguration.Package" value="C:\Users\Guibole\Crypto\The-Old-Fanto-Lab\node_modules\prettier" />
     <property name="ts.external.directory.path" value="C:\Users\Guibole\Crypto\Nft-Watch\node_modules\typescript\lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -86,11 +73,41 @@
     </key>
   </component>
   <component name="RunManager" selected="npm.start">
+    <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/../The-Old-Fanto-Lab/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="build" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="deploy" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/../The-Old-Fanto-Lab/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="deploy" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
     <configuration name="develop" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/../The-Old-Fanto-Lab/package.json" />
       <command value="run" />
       <scripts>
         <script value="develop" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="serve" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/../The-Old-Fanto-Lab/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="serve" />
       </scripts>
       <node-interpreter value="project" />
       <envs />
@@ -106,10 +123,20 @@
       <envs />
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="npm.build" />
+      <item itemvalue="npm.develop" />
+      <item itemvalue="npm.deploy" />
+      <item itemvalue="npm.serve" />
+      <item itemvalue="npm.start" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="npm.start" />
         <item itemvalue="npm.develop" />
+        <item itemvalue="npm.serve" />
+        <item itemvalue="npm.deploy" />
+        <item itemvalue="npm.build" />
       </list>
     </recent_temporary>
   </component>
@@ -122,6 +149,7 @@
       <option name="presentableId" value="Default" />
       <updated>1643752077672</updated>
       <workItem from="1643752078967" duration="5618000" />
+      <workItem from="1643891800810" duration="406000" />
     </task>
     <task id="LOCAL-00001" summary="kinda Working alerts">
       <created>1643752318146</created>
@@ -158,15 +186,79 @@
       <option name="project" value="LOCAL" />
       <updated>1643796927300</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="fix sounds">
+      <created>1643797004943</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1643797004943</updated>
+    </task>
+    <task id="LOCAL-00007" summary="fix webpack mes couilles">
+      <created>1643817407880</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1643817407880</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Spring Fanto Lab">
+      <created>1643847440773</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1643847440773</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Spring Fanto Lab 2">
+      <created>1643890389503</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1643890389503</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="SHOW_OTHER_BRANCHES" value="true" />
+    <option name="COLUMN_ID_ORDER">
+      <list>
+        <option value="Default.Root" />
+        <option value="Default.Author" />
+        <option value="Default.Date" />
+        <option value="Default.Subject" />
+      </list>
+    </option>
+  </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
+        <entry key="6d2ad34e-e5ea-44df-8b31-a1888fb7887a">
+          <value>
+            <State>
+              <option name="SHOW_ONLY_AFFECTED_CHANGES" value="true" />
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="HEAD" />
+                      </list>
+                    </value>
+                  </entry>
+                  <entry key="roots">
+                    <value>
+                      <list>
+                        <option value="$PROJECT_DIR$/../The-Old-Fanto-Lab" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
         <entry key="MAIN">
           <value>
             <State />
@@ -174,14 +266,56 @@
         </entry>
       </map>
     </option>
+    <option name="OPEN_GENERIC_TABS">
+      <map>
+        <entry key="6d2ad34e-e5ea-44df-8b31-a1888fb7887a" value="TOOL_WINDOW" />
+      </map>
+    </option>
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="kinda Working alerts" />
     <MESSAGE value="1 step closer" />
     <MESSAGE value="fixed update price" />
     <MESSAGE value="fixed update coll link + 3*2" />
     <MESSAGE value="fixed update coll link + 3*2 v2" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed update coll link + 3*2 v2" />
+    <MESSAGE value="fix sounds" />
+    <MESSAGE value="fix webpack mes couilles" />
+    <MESSAGE value="Spring Fanto Lab" />
+    <MESSAGE value="Spring Fanto Lab 2" />
+    <MESSAGE value="Spring Fanto Lab 3 gogogo" />
+    <option name="LAST_COMMIT_MESSAGE" value="Spring Fanto Lab 3 gogogo" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/../The-Old-Fanto-Lab/node_modules/react-dom/cjs/react-dom-server.node.development.js</url>
+          <line>4052</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/../The-Old-Fanto-Lab/node_modules/web3-providers-ws/lib/helpers.js</url>
+          <line>22</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/../The-Old-Fanto-Lab/src/components/Journey.js</url>
+          <line>19</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/../The-Old-Fanto-Lab/src/static/js/getWeb3.js</url>
+          <line>3</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/../The-Old-Fanto-Lab/src/static/js/getWeb3.js</url>
+          <line>4</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
