@@ -634,9 +634,9 @@ const EventPrinter:React.FC<Props> = (props) => {
                 {/*    </Feed>*/}
                 {/*</FeedContainer>*/}
             </ListContainer>
-            <ChartArea>
-                <ChartCard volume={chartVolume}/>
-            </ChartArea>
+            {/*<ChartArea>*/}
+            {/*    <ChartCard volume={chartVolume}/>*/}
+            {/*</ChartArea>*/}
         </Body>
     )
 }
